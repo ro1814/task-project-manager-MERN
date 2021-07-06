@@ -27,6 +27,10 @@ const Register = () => {
 
     //Validate empty inputs
 
+    //Password must have at least 6 digits
+
+    //Both passwords and password confirmation must match
+
     //Pass to action
   };
 
