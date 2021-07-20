@@ -1,6 +1,11 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useContext, useState } from 'react';
+import projectContext from '../../context/projects/projectContext'
 
 const NewProject = () => {
+
+    // Get the form State
+    const projectsContext = useContext(projectContext);
+    const { form, showForm } = projectsContext;
 
     //State for Project
     const [ project, saveProject ] = useState({
@@ -32,15 +37,21 @@ const NewProject = () => {
         //Reset the form
     }
 
+    //Show form 
+    const onClickForm = () => {
+        showForm()
+    }
+
     return (
         <Fragment>
         <button 
                 type="button"
                 className="btn btn-block btn-primario"
-               
+                onClick = { onClickForm }
             >New Project</button>
 
-        <form className='formulario-nuevo-proyecto' onSubmit= { onSubmitProject }>
+        { form ? (
+                <form className='formulario-nuevo-proyecto' onSubmit= { onSubmitProject }>
             <input type="text" name="name" placeholder="Name your Project" className='input-text' onChange={ onChangeProject }
             value={name}/>
             
@@ -48,6 +59,9 @@ const NewProject = () => {
             className='btn btn-primario btn-block'
             value='Add Project'/>
         </form>
+            )
+        : null
+        }
         </Fragment>
      );
 }
