@@ -4,8 +4,11 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Projects from './components/projects/Projects';
 
+import ProjectState from './context/projects/projectState';
+
 function App() {
   return (
+    <ProjectState>
     <Router>
 
       <Switch>
@@ -16,6 +19,7 @@ function App() {
       </Switch>
 
     </Router>
+    </ProjectState>
   );
 }
 
