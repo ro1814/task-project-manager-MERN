@@ -3,6 +3,7 @@ import Task from './Task'
 import projectContext from '../../context/projects/projectContext';
 
 const TasksList = () => {
+    //Some notes
 
     //Get projects form initial state
     const projectsContext = useContext(projectContext);
