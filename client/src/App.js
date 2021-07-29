@@ -5,10 +5,12 @@ import Register from './components/auth/Register';
 import Projects from './components/projects/Projects';
 
 import ProjectState from './context/projects/projectState';
+import TaskState from './context/tasks/taskState';
 
 function App() {
   return (
     <ProjectState>
+    <TaskState>
     <Router>
 
       <Switch>
@@ -19,6 +21,7 @@ function App() {
       </Switch>
 
     </Router>
+    </TaskState>
     </ProjectState>
   );
 }

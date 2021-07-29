@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import projectContext from "./projectContext";
 import projectReducer from "./projectReducer";
-import { PROJECT_FORM, GET_PROJECTS, ADD_PROJECT, VALIDATE_FORM, ACTUAL_PROJECT } from "../../types/index";
+import { PROJECT_FORM, GET_PROJECTS, ADD_PROJECT, VALIDATE_FORM, ACTUAL_PROJECT, DELETE_PROJECT } from "../../types/index";
 
 import { v4 as uuidv4 } from 'uuid';
 
@@ -61,6 +61,14 @@ const ProjectState = (props) => {
       payload: projectID
     })
   }
+  
+  //Delete a project
+  const deleteProject = projectID => {
+    dispatch({
+      type: DELETE_PROJECT,
+      payload: projectID
+    })
+  }
 
   return (
     <projectContext.Provider
@@ -73,7 +81,8 @@ const ProjectState = (props) => {
         getProjects,
         addProject,
         showError,
-        actualProject
+        actualProject,
+        deleteProject
       }}
     >
       {props.children}

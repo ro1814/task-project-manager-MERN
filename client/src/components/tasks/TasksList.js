@@ -7,7 +7,7 @@ const TasksList = () => {
 
     //Get projects form initial state
     const projectsContext = useContext(projectContext);
-    const { project } = projectsContext;
+    const { project, deleteProject } = projectsContext;
 
     //If project is not selected
     if(!project) return <h2>Select a project</h2>;
@@ -16,12 +16,12 @@ const TasksList = () => {
     //Array destructuring to fetch actual project
     const [actualProject] = project;
 
-    const tasksProject = [
-        {name: 'Choose platform', state: true},
-        {name: 'Choose colors', state: false},
-        {name: 'Choose payment platform', state: false},
-        {name: 'Choose Hosting service', state: true},
-    ];
+    const tasksProject = [];
+
+    //Delete a project
+    const deleteOnClick = () => {
+        deleteProject(actualProject.id)
+    }
 
 
     return ( 
@@ -40,7 +40,8 @@ const TasksList = () => {
         </ul>
 
         <button type='button'
-        className='btn btn-eliminar'>
+        className='btn btn-eliminar'
+        onClick={ deleteOnClick }>
             Delete Project &times;
         </button>
         </Fragment>
